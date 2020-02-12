@@ -8,8 +8,8 @@ import Form from './styles/Form'
 import Error from './ErrorMessage'
 import formatMoney from '../lib/formatMoney'
 
-const SINGLE_ITEM_QUERY = gql`
-  query SINGLE_ITEM_QUERY($id: ID!){
+const UPDATE_ITEM_QUERY = gql`
+  query UPDATE_ITEM_QUERY($id: ID!){
     item(where: {id: $id}){
       id
       title
@@ -41,7 +41,7 @@ const UPDATE_ITEM_MUTATION = gql`
 `
 
 export default function ({id}) {
-  const {loading, error, data} = useQuery(SINGLE_ITEM_QUERY,{
+  const {loading, error, data} = useQuery(UPDATE_ITEM_QUERY,{
     variables: {id: id}
   })
   const [updateItem] = useMutation(UPDATE_ITEM_MUTATION)
@@ -71,7 +71,7 @@ export default function ({id}) {
   }
   
   if (loading) return <p>Loading...</p>
-  if (error) return <p>Error: {error.message}</p>
+  if (error) return <Error error={error} />
   if (!data.item) return <p>No item found for id: {id}</p>
   
   return(

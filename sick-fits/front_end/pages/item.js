@@ -1,6 +1,8 @@
-const Item = () => (
+import SingleItem from '../components/SingleItem'
+
+const Item = ({query}) => (
   <div>
-    <p>single Item</p>
+    <SingleItem id={query.id} />
   </div>
 )
 

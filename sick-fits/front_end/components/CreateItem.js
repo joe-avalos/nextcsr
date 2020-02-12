@@ -8,6 +8,7 @@ import Form from './styles/Form'
 import Error from './ErrorMessage'
 import formatMoney from '../lib/formatMoney'
 import styled from 'styled-components'
+import {ALL_ITEMS_QUERY} from './Items'
 
 const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
@@ -53,7 +54,11 @@ export default function () {
     if (!savingStarted) {
       setSavingStarted(true)
       createItem({
-        variables: {...values, image, largeImage}
+        variables: {...values, image, largeImage},
+        update(cache, {data:{createItem}}){
+          const {items} = cache.readQuery({query: ALL_ITEMS_QUERY})
+          cache.writeQuery({query: ALL_ITEMS_QUERY, data: {items: items.concat([createItem])}})
+        }
       }).then(res => {
         Router.push({
           pathname: '/item',
@@ -84,9 +89,9 @@ export default function () {
       }
     )
     const file = await res.json()
-    console.log(file)
+    console.log(file.eager)
     setImage(file.secure_url)
-    setLargeImage(file.eager.secure_url)
+    setLargeImage(file.eager[0].secure_url)
   }
   
   return(
@@ -99,8 +104,8 @@ export default function () {
                  multiple={false}
                  required={true}
                  onChange={uploadFile}/>
-          {image && <CenteredDiv><img width={100} src={image} alt={'Upload Preview'} /></CenteredDiv> }
         </label>
+        {image && <CenteredDiv><img width={100} src={image} alt={'Upload Preview'} /></CenteredDiv> }
         <label htmlFor="title">
           Title
           <input type="text" id="title" name="title" placeholder="title"

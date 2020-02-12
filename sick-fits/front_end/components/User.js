@@ -1,0 +1,31 @@
+import gql from 'graphql-tag'
+import {useQuery} from '@apollo/react-hooks'
+import Error from './ErrorMessage'
+import styled from 'styled-components'
+import Head from 'next/head'
+
+const CURRENT_USER_QUERY =  gql`
+  query CURRENT_USER_QUERY{
+    me {
+      id
+      email
+      name
+      permissions
+    }
+  }
+`
+
+export default function ({children, callback}) {
+  const {loading, error, data} = useQuery(CURRENT_USER_QUERY)
+  
+  if (loading) return null
+  if (error) return <Error error={error} />
+  callback(!!data.me)
+  return(
+    <>
+      {children}
+    </>
+  )
+}
+
+export {CURRENT_USER_QUERY}

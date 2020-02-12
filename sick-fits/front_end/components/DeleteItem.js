@@ -15,12 +15,9 @@ export default function ({id}) {
   
   const [deleteItem, {error}] = useMutation(DELETE_ITEM_MUTATION, {
     update(cache, {data: {deleteItem}}){
-      console.log({cache, deleteItem})
       const data = cache.readQuery({query: ALL_ITEMS_QUERY})
       data.items = data.items.filter(item => item.id !== deleteItem.id)
-      //cache.writeData({data});
       cache.writeQuery({query: ALL_ITEMS_QUERY, data})
-      console.log({data, cache})
     }
   })
   
