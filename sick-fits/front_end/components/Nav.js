@@ -1,13 +1,14 @@
 import {useState} from 'react'
+import {useMutation} from '@apollo/react-hooks'
 import Link from 'next/link'
 import NavStyles from './styles/NavStyles'
 import User from './User'
 import Signout from './Signout'
-
+import {TOGGLE_CART_MUTATION} from './Cart'
 
 export const Nav = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  
+  const [toggleCart] = useMutation(TOGGLE_CART_MUTATION)
   function callback(logged) {
     setLoggedIn(logged)
   }
@@ -30,6 +31,7 @@ export const Nav = () => {
             <a>Account</a>
           </Link>
           <Signout />
+          <button onClick={toggleCart}>My Cart</button>
         </>
         }
         {!loggedIn &&

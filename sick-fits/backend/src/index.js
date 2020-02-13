@@ -2,6 +2,8 @@ const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 require('dotenv').config({path: 'variables.env'})
 
+const db = require('./db')
+
 const createServer = require('./createServer')
 
 const server = createServer()
@@ -17,7 +19,15 @@ server.express.use((req, res, next) => {
   }
   next()
 })
-//TODO Use express middleWare to populate current user
+// Use express middleWare to populate current user
+server.express.use(async (req, res, next) =>{
+  if (!req.userId) return next()
+  const user = await db.query.user({where: {id: req.userId}},
+    '{id, email, name, permissions}'
+    )
+  req.user = user
+  next()
+})
 
 server.start({
   cors: {

@@ -30,7 +30,9 @@ export default function ({id}) {
           pathname: '/items'
         })
         }
-      )
+      ).catch(e=>{
+        alert(e.message)
+      })
     }
   }
   

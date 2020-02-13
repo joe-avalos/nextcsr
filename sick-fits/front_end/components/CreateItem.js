@@ -120,19 +120,6 @@ export default function () {
                  value={values.description}
                  onChange={handleChange} />
         </label>
-        {/*<label htmlFor="image">
-          Image
-          <input type="text" id="image" name="image" placeholder="image"
-                 required={true}
-                 value={values.image}
-                 onChange={handleChange}/>
-        </label>
-        <label htmlFor="largeImage">
-          LargeImage
-          <input type="text" id="largeImage" name="largeImage" placeholder="largeImage"
-                 value={values.largeImage}
-                 onChange={handleChange}/>
-        </label>*/}
         <label htmlFor="price">
           Price
           <input type="number" id="price" name="price" placeholder="price" required
