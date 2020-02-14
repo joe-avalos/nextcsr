@@ -45,3 +45,5 @@ export default function ({page}) {
     </PaginationStyles>
   )
 }
+
+export {PAGINATION_QUERY}

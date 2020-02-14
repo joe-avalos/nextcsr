@@ -5,12 +5,13 @@ import NavStyles from './styles/NavStyles'
 import User from './User'
 import Signout from './Signout'
 import {TOGGLE_CART_MUTATION} from './Cart'
+import CartCount from './CartCount'
 
 export const Nav = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [me, setMe] = useState(false);
   const [toggleCart] = useMutation(TOGGLE_CART_MUTATION)
   function callback(logged) {
-    setLoggedIn(logged)
+    setMe(logged)
   }
   
   return (
@@ -19,7 +20,7 @@ export const Nav = () => {
         <Link href="/items">
           <a>Shop</a>
         </Link>
-        {loggedIn &&
+        {!!me ?
         <>
           <Link href="/sell">
             <a>Sell</a>
@@ -31,10 +32,12 @@ export const Nav = () => {
             <a>Account</a>
           </Link>
           <Signout />
-          <button onClick={toggleCart}>My Cart</button>
+          <button onClick={toggleCart}>
+            My Cart
+            <CartCount count={me.cart && me.cart.reduce((tally,cartItem)=>tally+cartItem.quantity, 0)} />
+          </button>
         </>
-        }
-        {!loggedIn &&
+        :
         <Link href="/signup">
           <a>Signup</a>
         </Link>

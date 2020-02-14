@@ -9,6 +9,7 @@ import Error from './ErrorMessage'
 import formatMoney from '../lib/formatMoney'
 import styled from 'styled-components'
 import {ALL_ITEMS_QUERY} from './Items'
+import {PAGINATION_QUERY} from './Pagination'
 
 const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
@@ -58,7 +59,8 @@ export default function () {
         update(cache, {data:{createItem}}){
           const {items} = cache.readQuery({query: ALL_ITEMS_QUERY})
           cache.writeQuery({query: ALL_ITEMS_QUERY, data: {items: items.concat([createItem])}})
-        }
+        },
+        refetchQueries: [{query: PAGINATION_QUERY}]
       }).then(res => {
         Router.push({
           pathname: '/item',
@@ -75,7 +77,6 @@ export default function () {
   }
   
   async function uploadFile (e){
-    console.log('Uploading...')
     const files = e.target.files
     const data = new FormData()
     data.append('file', files[0])
@@ -89,7 +90,6 @@ export default function () {
       }
     )
     const file = await res.json()
-    console.log(file.eager)
     setImage(file.secure_url)
     setLargeImage(file.eager[0].secure_url)
   }

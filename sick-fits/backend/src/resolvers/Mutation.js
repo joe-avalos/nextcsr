@@ -7,7 +7,7 @@ const {hasPermission} = require('../utils')
 
 const Mutations = {
   async createItem(parent, args, ctx, info) {
-    if (!ctx.request.userId){
+    if (!ctx.request.userId) {
       throw new Error("You have to be logged in to do that!")
     }
     
@@ -15,8 +15,8 @@ const Mutations = {
       {
         data: {
           //This is how we create relationships between user and item
-          user:{
-            connect:{
+          user: {
+            connect: {
               id: ctx.request.userId
             }
           },
@@ -29,33 +29,33 @@ const Mutations = {
     
     return item
   },
-  updateItem(parent, args, ctx, info){
+  updateItem(parent, args, ctx, info) {
     const updates = {...args}
     delete updates.id
     return ctx.db.mutation.updateItem({
-      data: updates,
-      where:{
-        id: args.id
+        data: updates,
+        where: {
+          id: args.id
+        },
       },
-    },
       info
-      )
+    )
   },
-  async deleteItem(parent, args, ctx, info){
+  async deleteItem(parent, args, ctx, info) {
     const where = {id: args.id}
     const item = await ctx.db.query.item({where}, '{id title user {id}}')
     //Check permissions
     
     const ownsItem = item.user.id === ctx.request.userId
-    const hasPermissions = ctx.request.user.permissions.some(p => ['ADMIN','ITEMDELETE'].includes(p))
+    const hasPermissions = ctx.request.user.permissions.some(p => ['ADMIN', 'ITEMDELETE'].includes(p))
     
-    if (!ownsItem && !hasPermissions){
+    if (!ownsItem && !hasPermissions) {
       throw new Error('You don\'t have permission to do that!')
     }
     
     return ctx.db.mutation.deleteItem({where}, info)
   },
-  async signup(parent, args, ctx, info){
+  async signup(parent, args, ctx, info) {
     args.email = args.email.toLowerCase()
     
     const password = await bcrypt.hash(args.password, 10)
@@ -66,9 +66,9 @@ const Mutations = {
         password,
         permissions: {set: ['USER']}
       }
-    },info)
+    }, info)
     
-    const token = jwt.sign({userId: user.id},process.env.APP_SECRET)
+    const token = jwt.sign({userId: user.id}, process.env.APP_SECRET)
     
     ctx.response.cookie('token', token, {
       httpOnly: true,
@@ -76,18 +76,18 @@ const Mutations = {
     })
     return user
   },
-  async signin(parent, {email, password}, ctx, info){
+  async signin(parent, {email, password}, ctx, info) {
     const user = await ctx.db.query.user({where: {email: email.toLowerCase()}})
-    if(!user){
+    if (!user) {
       throw new Error(`No user found with email: ${email}`)
     }
     const valid = await bcrypt.compare(password, user.password)
     console.log({valid})
-    if(!valid){
+    if (!valid) {
       throw new Error('Invalid Password!')
     }
     
-    const token = jwt.sign({userId: user.id},process.env.APP_SECRET)
+    const token = jwt.sign({userId: user.id}, process.env.APP_SECRET)
     
     ctx.response.cookie('token', token, {
       httpOnly: true,
@@ -95,13 +95,13 @@ const Mutations = {
     })
     return user
   },
-  signout(parent, args, ctx, info){
+  signout(parent, args, ctx, info) {
     ctx.response.clearCookie('token')
     return {message: 'Goodbye!'}
   },
-  async requestReset(parent, args, ctx, info){
+  async requestReset(parent, args, ctx, info) {
     const user = await ctx.db.query.user({where: {email: args.email.toLowerCase()}})
-    if(!user){
+    if (!user) {
       throw new Error(`No user found with email: ${args.email}`)
     }
     const randomBytesPromisified = promisify(randomBytes)
@@ -125,22 +125,22 @@ const Mutations = {
     
     return {message: 'Thanks!'}
   },
-  async resetPassword(parent, args, ctx, info){
-    if (args.password !== args.confirmPassword){
+  async resetPassword(parent, args, ctx, info) {
+    if (args.password !== args.confirmPassword) {
       throw new Error('Passwords don\'t match!')
     }
     const [user] = await ctx.db.query.users({
-      where:{
+      where: {
         resetToken: args.resetToken,
         resetTokenExpiry_gte: Date.now() - 3600000
       }
     })
-    if (!user){
+    if (!user) {
       throw new Error('Your token is either invalid or expired.')
     }
     const password = await bcrypt.hash(args.password, 10)
     const updatedUser = await ctx.db.mutation.updateUser({
-      where:{id: user.id},
+      where: {id: user.id},
       data: {
         password,
         resetToken: null,
@@ -154,20 +154,62 @@ const Mutations = {
     })
     return updatedUser
   },
-  async updatePermissions(parent, args, ctx, info){
-    if(!ctx.request.userId){
+  async updatePermissions(parent, args, ctx, info) {
+    if (!ctx.request.userId) {
       throw new Error('You have to be logged in to continue.')
     }
     const currentUser = await ctx.db.query.user({
       where: {id: ctx.request.userId}
     }, info)
-    hasPermission(currentUser, ['ADMIN','PERMISSIONUPDATE'])
+    hasPermission(currentUser, ['ADMIN', 'PERMISSIONUPDATE'])
     return ctx.db.mutation.updateUser({
-      data:{
+      data: {
         permissions: {set: args.permissions}
       },
-      where:{id: args.userId}
-    },info)
+      where: {id: args.userId}
+    }, info)
+  },
+  async addToCart(parent, args, ctx, info) {
+    const {userId} = ctx.request
+    if (!userId) {
+      throw new Error('You have to be logged in to continue')
+    }
+    const [existingCartItem] = await ctx.db.query.cartItems({
+      where: {
+        user: {id: userId},
+        item: {id: args.id}
+      }
+    })
+    
+    if (existingCartItem) {
+      console.log('Item already in cart!')
+      return ctx.db.mutation.updateCartItem({
+        where: {id: existingCartItem.id},
+        data: {quantity: existingCartItem.quantity + 1}
+      }, info)
+    }
+    return ctx.db.mutation.createCartItem({
+      data: {
+        user: {
+          connect: {id: userId}
+        },
+        item: {
+          connect: {id: args.id}
+        }
+      }
+    }, info)
+  },
+  async removeFromCart(parent, args, ctx, info) {
+    const cartItem = await ctx.db.query.cartItem({
+        where: {id: args.id}
+      }, `{id user {id}}`
+    )
+    if (!cartItem) throw new Error('No cart item found')
+    if(cartItem.user.id !== ctx.request.userId) throw new Error('You do not own this cart item.')
+    
+    return ctx.db.mutation.deleteCartItem({
+      where: {id: args.id}
+    }, info)
   }
 };
 

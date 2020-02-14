@@ -1,8 +1,6 @@
 import gql from 'graphql-tag'
 import {useQuery} from '@apollo/react-hooks'
 import Error from './ErrorMessage'
-import styled from 'styled-components'
-import Head from 'next/head'
 
 const CURRENT_USER_QUERY =  gql`
   query CURRENT_USER_QUERY{
@@ -11,6 +9,16 @@ const CURRENT_USER_QUERY =  gql`
       email
       name
       permissions
+      cart {
+        id
+        quantity
+        item {
+          id
+          price
+          image
+          title
+        }
+      }
     }
   }
 `
@@ -20,7 +28,7 @@ export default function ({children, callback}) {
   
   if (loading) return null
   if (error) return <Error error={error} />
-  callback(!!data.me)
+  callback(data.me)
   return(
     <>
       {children}

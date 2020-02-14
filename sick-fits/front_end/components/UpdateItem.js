@@ -44,9 +44,11 @@ export default function ({id}) {
   const {loading, error, data} = useQuery(UPDATE_ITEM_QUERY,{
     variables: {id: id}
   })
-  const [updateItem] = useMutation(UPDATE_ITEM_MUTATION)
+  const itemMutation = useMutation(UPDATE_ITEM_MUTATION)
   const [savingStarted, setSavingStarted] = useState(false)
-  console.log(savingStarted)
+  const [updateItem] = itemMutation
+  const mutationLoading = itemMutation[1].loading
+  const mutationError = itemMutation[1].error
   
   const {values, errors, handleChange, handleSubmit} = useForm(callback, validate)
   
@@ -76,7 +78,8 @@ export default function ({id}) {
   
   return(
     <Form onSubmit={handleSubmit}>
-      <fieldset>
+      <Error error={mutationError} />
+      <fieldset disabled={mutationLoading} aria-busy={mutationLoading}>
         <label htmlFor="title">
           Title
           <input type="text" id="title" name="title" placeholder="title"
