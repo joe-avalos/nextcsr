@@ -35,14 +35,14 @@ const Inner = styled.div`
   padding: 2rem;
 `
 
-export default function (props) {
+export default function ({children}) {
   return (
     <StyledPage>
       <GlobalStyle/>
       <Meta/>
       <Header/>
       <Inner>
-        {props.children}
+        {children}
       </Inner>
     </StyledPage>
   )

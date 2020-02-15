@@ -3,6 +3,8 @@ import {useQuery} from '@apollo/react-hooks'
 import Error from './ErrorMessage'
 import styled from 'styled-components'
 import Head from 'next/head'
+import formatMoney from '../lib/formatMoney'
+import Link from 'next/link'
 
 const SINGLE_ITEM_QUERY =  gql`
   query SINGLE_ITEM_QUERY($id: ID!){
@@ -54,6 +56,13 @@ export default function ({id}) {
       <div className="detials">
         <h2>Viewing {item.title}</h2>
         <p>{item.description}</p>
+        <p>Price: {formatMoney(item.price)}</p>
+        <Link href={{
+        pathname: '/update',
+        query: {id: item.id}
+      }}>
+        <a>Edit ✏️</a>
+      </Link>
       </div>
     </SingleItemStyles>
   )

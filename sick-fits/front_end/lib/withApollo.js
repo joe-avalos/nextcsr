@@ -31,7 +31,7 @@ export default withApollo(
           }
         },
         defaults: {
-          cartOpen: true
+          cartOpen: false
         }
       },
       cache: new InMemoryCache().restore(initialState||{}),
