@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4af42fc4-c376-4c26-8e41-cda377b12183" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front_end/.idea/front_end.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front_end/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front_end/components/Pagination.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../front_end/components/SingleItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/frontend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/components/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/components/Meta.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/components/Nav.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/components/Page.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/pages/_app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/pages/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/pages/sell.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datamodel.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/datamodel.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/prisma.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/prisma.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolvers/Mutation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolvers/Mutation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resolvers/Query.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/resolvers/Query.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/schema.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/components/CreateItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/components/CreateItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/components/DeleteItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/components/DeleteItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/components/Items.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/components/Items.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/components/UpdateItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/components/UpdateItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/pages/item.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/pages/item.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/components/styles/DropDown.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/components/styles/DropDown.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/components/styles/ItemStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/components/styles/ItemStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/components/styles/NavStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/components/styles/NavStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/components/styles/PaginationStyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/components/styles/PaginationStyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_COMMON_BRANCH" value="master" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../bitso-black-jack" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="JQLSearcherProjectManager">
+    <selected>-1</selected>
+    <searchers />
+  </component>
+  <component name="JiraServerManager">
+    <selected>-1</selected>
+    <servers />
+  </component>
+  <component name="PhpDebugGeneral" xdebug_debug_port="9090" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1440" />
+    <option name="y" value="-561" />
+    <option name="width" value="924" />
+    <option name="height" value="1007" />
+  </component>
+  <component name="ProjectId" id="1XOjwHqCAdVNGmhXZRJ7t6LiqUM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/../../../bitso-black-jack/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4af42fc4-c376-4c26-8e41-cda377b12183" name="Default Changelist" comment="" />
+      <created>1574266828455</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574266828455</updated>
+      <workItem from="1574266829714" duration="1937000" />
+      <workItem from="1574271422334" duration="608000" />
+      <workItem from="1574273264165" duration="3564000" />
+      <workItem from="1580924275033" duration="159000" />
+      <workItem from="1580927466348" duration="24000" />
+      <workItem from="1581093663433" duration="1994000" />
+    </task>
+    <task id="LOCAL-00001" summary="bare-bones - setup for interview">
+      <created>1581095532664</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581095532664</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="bare-bones - setup for interview" />
+    <option name="LAST_COMMIT_MESSAGE" value="bare-bones - setup for interview" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="312" y="23" key="CommitChangelistDialog2" timestamp="1581095532500">
+      <screen x="0" y="23" width="1440" height="827" />
+    </state>
+    <state x="312" y="23" key="CommitChangelistDialog2/0.23.1440.827/1440.-561.1920.1057@0.23.1440.827" timestamp="1581095532500" />
+    <state width="679" height="182" key="GridCell.Tab.0.bottom" timestamp="1581093975281">
+      <screen x="0" y="23" width="1440" height="827" />
+    </state>
+    <state width="679" height="182" key="GridCell.Tab.0.bottom/0.23.1440.827/1440.-561.1920.1057@0.23.1440.827" timestamp="1581093975281" />
+    <state width="679" height="182" key="GridCell.Tab.0.center" timestamp="1581093975280">
+      <screen x="0" y="23" width="1440" height="827" />
+    </state>
+    <state width="679" height="182" key="GridCell.Tab.0.center/0.23.1440.827/1440.-561.1920.1057@0.23.1440.827" timestamp="1581093975280" />
+    <state width="679" height="182" key="GridCell.Tab.0.left" timestamp="1581093975279">
+      <screen x="0" y="23" width="1440" height="827" />
+    </state>
+    <state width="679" height="182" key="GridCell.Tab.0.left/0.23.1440.827/1440.-561.1920.1057@0.23.1440.827" timestamp="1581093975279" />
+    <state width="679" height="182" key="GridCell.Tab.0.right" timestamp="1581093975280">
+      <screen x="0" y="23" width="1440" height="827" />
+    </state>
+    <state width="679" height="182" key="GridCell.Tab.0.right/0.23.1440.827/1440.-561.1920.1057@0.23.1440.827" timestamp="1581093975280" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
