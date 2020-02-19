@@ -1,0 +1,20 @@
+import formatMoney from '../lib/formatMoney'
+
+describe('formatMoney function', ()=>{
+  xit('should work with fractional dollars', function () {
+    expect(formatMoney(1)).toEqual('$0.01')
+    expect(formatMoney(40)).toEqual('$0.40')
+    expect(formatMoney(93)).toEqual('$0.93')
+  })
+  xit('should work with whole dollars', function () {
+    expect(formatMoney(1235400)).toEqual('$12,354')
+    expect(formatMoney(84600)).toEqual('$846')
+    
+  });
+  xit('should work with whole and fractional dollars', function () {
+    expect(formatMoney(84634)).toEqual('$846.34')
+    expect(formatMoney(100)).toEqual('$1')
+    expect(formatMoney(1750921734)).toEqual('$17,509,217.34')
+    
+  });
+})

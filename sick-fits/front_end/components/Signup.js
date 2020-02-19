@@ -2,13 +2,9 @@ import gql from 'graphql-tag'
 import {useMutation} from '@apollo/react-hooks'
 import Error from './ErrorMessage'
 import Form from './styles/Form'
-import styled from 'styled-components'
-import Head from 'next/head'
 import useForm from '../lib/useForm'
-import {ALL_ITEMS_QUERY} from './Items'
 import Router from 'next/router'
 import {useState} from 'react'
-import {CREATE_ITEM_MUTATION} from './CreateItem'
 import {CURRENT_USER_QUERY} from './User'
 
 const SIGNUP_MUTATION =  gql`
@@ -59,7 +55,7 @@ export default function () {
   if (error) return <Error error={error} />
   
   return(
-    <Form method={"POST"} onSubmit={handleSubmit}>
+    <Form method={"POST"} onSubmit={handleSubmit} data-test="form">
       <fieldset disabled={loading} aria-busy={loading}>
         <h2>Signup for an Account!</h2>
         <Error error={error} />
@@ -81,3 +77,5 @@ export default function () {
     </Form>
   )
 }
+
+export {SIGNUP_MUTATION}

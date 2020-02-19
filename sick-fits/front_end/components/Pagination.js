@@ -22,7 +22,7 @@ export default function ({page}) {
   const count = data.itemsConnection.aggregate.count
   const pages = Math.ceil(count / perPage)
   return(
-    <PaginationStyles>
+    <PaginationStyles data-test="pagination">
       <Head>
         <title>Sick fits! Page {page} of {pages}</title>
       </Head>
@@ -33,7 +33,7 @@ export default function ({page}) {
       }}>
         <a className="prev" aria-disabled={page <= 1}>← Prev</a>
       </Link>
-      <p>{page} of {pages}</p>
+      <p>{page} of <span className="totalPages">{pages}</span></p>
       <p>{count} items total</p>
       <Link
         href={{

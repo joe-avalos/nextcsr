@@ -9,7 +9,6 @@ import Error from './ErrorMessage'
 import formatMoney from '../lib/formatMoney'
 import styled from 'styled-components'
 import {ALL_ITEMS_QUERY} from './Items'
-import {PAGINATION_QUERY} from './Pagination'
 
 const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
@@ -59,8 +58,7 @@ export default function () {
         update(cache, {data:{createItem}}){
           const {items} = cache.readQuery({query: ALL_ITEMS_QUERY})
           cache.writeQuery({query: ALL_ITEMS_QUERY, data: {items: items.concat([createItem])}})
-        },
-        refetchQueries: [{query: PAGINATION_QUERY}]
+        }
       }).then(res => {
         Router.push({
           pathname: '/item',
@@ -95,7 +93,7 @@ export default function () {
   }
   
   return(
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} data-test="form">
       <Error error={error} />
       <fieldset disabled={loading} aria-busy={loading}>
         <label htmlFor="file">

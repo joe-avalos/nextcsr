@@ -1,0 +1,33 @@
+function Person(name, foods){
+  this.name = name
+  this.foods = foods
+}
+
+Person.prototype.fetchFavFoods = function(){
+  return new Promise((resolve,reject)=>{
+    setTimeout(()=>resolve(this.foods), 1200)
+  })
+}
+
+describe('mocking testing', ()=>{
+  xit('should mock a reg function', function () {
+    const fetchDogs = jest.fn()
+    fetchDogs('snickers')
+    expect(fetchDogs).toHaveBeenCalled()
+    expect(fetchDogs).toHaveBeenCalledWith('snickers')
+    fetchDogs('hugo')
+    expect(fetchDogs).toHaveBeenCalledTimes(2)
+  });
+  xit('should create a person', function () {
+    const me = new Person('Bolo', ['pizza', 'burger', 'hot dog', 'caviar'])
+    expect(me.name).toEqual('Bolo')
+  });
+  
+  xit('should fetch foods', async function () {
+    const me = new Person('Bolo', ['pizza', 'burger', 'hot dog', 'caviar'])
+    //mock the favFoods function
+    me.fetchFavFoods = jest.fn().mockResolvedValue(['sushi','ramen'])
+    const favFoods = await me.fetchFavFoods()
+    expect(favFoods).toContain('sushi')
+  });
+})

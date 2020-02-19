@@ -67,3 +67,5 @@ export default function ({id}) {
     </SingleItemStyles>
   )
 }
+
+export {SINGLE_ITEM_QUERY}

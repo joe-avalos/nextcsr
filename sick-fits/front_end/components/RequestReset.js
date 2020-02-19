@@ -43,7 +43,7 @@ export default function () {
   if (error) return <Error error={error} />
   
   return(
-    <Form method={"POST"} onSubmit={handleSubmit}>
+    <Form method={"POST"} onSubmit={handleSubmit} data-test="form">
       <fieldset disabled={loading} aria-busy={loading}>
         <h2>Request a password reset.</h2>
         <Error error={error} />
@@ -57,3 +57,5 @@ export default function () {
     </Form>
   )
 }
+
+export {REQUEST_RESET_MUTATION}

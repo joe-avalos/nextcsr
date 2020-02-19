@@ -16,7 +16,7 @@ export const Nav = () => {
   
   return (
     <User callback={callback}>
-      <NavStyles>
+      <NavStyles data-test="nav">
         <Link href="/items">
           <a>Shop</a>
         </Link>
@@ -46,3 +46,5 @@ export const Nav = () => {
     </User>
   )
 }
+
+export default Nav
