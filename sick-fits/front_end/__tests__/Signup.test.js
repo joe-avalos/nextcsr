@@ -45,7 +45,7 @@ describe('<Signup />', () => {
         <Signup/>
       </MockedProvider>
     )
-    expect(toJson(wrapper.find('form'))).toMatchSnapshot()
+    expect(toJson(wrapper.find('form[data-test="form"]'))).toMatchSnapshot()
   })
   it('should call the mutation properly', async ()=>{
     let apolloClient
@@ -65,7 +65,6 @@ describe('<Signup />', () => {
     type(wrapper, 'email', me.email)
     type(wrapper, 'password','password')
     wrapper.update()
-    console.log(wrapper.debug())
     wrapper.find('form[data-test="form"]').simulate('submit')
     await wait()
     //query apolloClient for user
