@@ -6,7 +6,6 @@ import useForm from '../lib/useForm'
 import Router from 'next/router'
 import Form from './styles/Form'
 import Error from './ErrorMessage'
-import formatMoney from '../lib/formatMoney'
 
 const UPDATE_ITEM_QUERY = gql`
   query UPDATE_ITEM_QUERY($id: ID!){
@@ -45,7 +44,10 @@ export default function ({id}) {
     variables: {id: id}
   })
   const itemMutation = useMutation(UPDATE_ITEM_MUTATION)
+  
   const [savingStarted, setSavingStarted] = useState(false)
+  const [stateValues, setStateValues] = useState(initValues)
+  
   const [updateItem] = itemMutation
   const mutationLoading = itemMutation[1].loading
   const mutationError = itemMutation[1].error
@@ -66,8 +68,14 @@ export default function ({id}) {
     }
   }
   
+  //Only used if you want to run frontend form validations
+  //Using it for sick-fits to reset form and be able to resubmit
   function validate(){
     let errors = {}
+    if (error && values !== stateValues){
+      setSavingStarted(false)
+      setStateValues(values)
+    }
     
     return errors
   }

@@ -22,13 +22,14 @@ export default function () {
     refetchQueries: [{query: CURRENT_USER_QUERY}]
   })
   
-  const [savingStarted, setSavingStarted] = useState(false)
-  
   const initValues = {
     email: '',
     name: '',
     password: ''
   }
+  
+  const [savingStarted, setSavingStarted] = useState(false)
+  const [stateValues, setStateValues] = useState(initValues)
   
   const {values, errors, handleChange, handleSubmit} = useForm(callback, validate, initValues)
   
@@ -45,9 +46,14 @@ export default function () {
     }
   }
   
+  //Only used if you want to run frontend form validations
+  //Using it for sick-fits to reset form and be able to resubmit
   function validate(){
     let errors = {}
-    
+    if (error && values !== stateValues){
+      setSavingStarted(false)
+      setStateValues(values)
+    }
     return errors
   }
   

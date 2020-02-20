@@ -33,10 +33,6 @@ export default function () {
   const {values, errors, handleChange, handleSubmit} = useForm(callback, validate, initValues)
   
   function callback() {
-    if (values !== stateValues){
-      setSavingStarted(false)
-      setStateValues(values)
-    }
     if (!savingStarted) {
       setSavingStarted(true)
       signin({
@@ -49,14 +45,19 @@ export default function () {
     }
   }
   
+  //Only used if you want to run frontend form validations
+  //Using it for sick-fits to reset form and be able to resubmit
   function validate(){
     let errors = {}
+    if (error && values !== stateValues){
+        setSavingStarted(false)
+        setStateValues(values)
+    }
     
     return errors
   }
   
   if (loading) return <p>Loading...</p>
-  if (error) return <Error error={error} />
   
   return(
     <Form method={"POST"} onSubmit={handleSubmit}>
