@@ -6,6 +6,7 @@ import {MockedProvider} from '@apollo/react-testing'
 import toJson from 'enzyme-to-json'
 import {fakeUser} from '../lib/testUtils'
 import {ApolloConsumer} from '@apollo/react-common'
+import Router from 'next/router'
 
 function type(wrapper, name, value) {
   wrapper.find(`input[name="${name}"]`).simulate('change',{target:{name,value}})
@@ -50,7 +51,7 @@ describe('<Signup />', () => {
   it('should call the mutation properly', async ()=>{
     let apolloClient
     const wrapper = mount(
-      <MockedProvider>
+      <MockedProvider mocks={mocks}>
         <ApolloConsumer>
           {client => {
             apolloClient = client
@@ -59,6 +60,8 @@ describe('<Signup />', () => {
         </ApolloConsumer>
       </MockedProvider>
     )
+    //mock the router
+    Router.router = {push: jest.fn()}
     await wait()
     wrapper.update()
     type(wrapper, 'name', me.name)
@@ -69,5 +72,6 @@ describe('<Signup />', () => {
     await wait()
     //query apolloClient for user
     const user = await apolloClient.query({query:CURRENT_USER_QUERY})
+    expect(user.data.me).toMatchObject(me)
   })
 })

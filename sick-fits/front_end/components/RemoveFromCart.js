@@ -46,3 +46,5 @@ export default function ({id}) {
     <BigButton title="Delete Item" disabled={loading} aria-busy={loading} onClick={removeFromCart}>&times;</BigButton>
   )
 }
+
+export {REMOVE_FROM_CART_MUTATION}

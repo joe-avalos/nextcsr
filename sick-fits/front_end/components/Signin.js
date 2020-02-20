@@ -28,10 +28,15 @@ export default function () {
     email: '',
     password: ''
   }
+  const [stateValues, setStateValues] = useState(initValues)
   
   const {values, errors, handleChange, handleSubmit} = useForm(callback, validate, initValues)
   
   function callback() {
+    if (values !== stateValues){
+      setSavingStarted(false)
+      setStateValues(values)
+    }
     if (!savingStarted) {
       setSavingStarted(true)
       signin({

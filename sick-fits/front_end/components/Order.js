@@ -1,4 +1,3 @@
-import {format} from 'date-fns'
 import Head from 'next/head'
 import formatMoney from '../lib/formatMoney'
 import Error from './ErrorMessage'
@@ -37,7 +36,7 @@ export default function({id}){
   if (error) return <Error error={error} />
   const order = data.order
   return(
-    <OrderStyles>
+    <OrderStyles data-test="order">
       <Head>
         <title>Sick Fits - Order {order.id}</title>
       </Head>
@@ -80,3 +79,5 @@ export default function({id}){
     </OrderStyles>
   )
 }
+
+export {SINGLE_ORDER_QUERY}

@@ -20,6 +20,8 @@ export default function ({id}) {
   })
   if (error) return <Error error={error}/>
   return (
-    <button onClick={addToCart} disabled={loading}>Add to cart 🛒</button>
+    <button onClick={addToCart} disabled={loading}>Add{loading ? 'ing':''} to cart 🛒</button>
   )
 }
+
+export {ADD_TO_CART_MUTATION}
